@@ -8,10 +8,13 @@ import com.eric.data.DataService;
 @Service
 public class DataServiceImpl implements DataService{
 
-	@SuppressWarnings("unused")
+	/*
+	 *  Attributes && Accessors
+	 */
+	
 	private DAO dao;
 	
-	public void setDAO(DAO dao){
+	public void setDao(DAO dao) {
 		this.dao = dao;
 	}
 	
