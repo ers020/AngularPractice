@@ -18,7 +18,6 @@ import javax.persistence.Table;
 @Table(name="STOCK_CATEGORY")
 public class Category {
 
-
 	@Id
 	@Column(name="CATEGORY_ID")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="categoryId")
