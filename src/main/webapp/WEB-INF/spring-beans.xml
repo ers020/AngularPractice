@@ -9,7 +9,13 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	<tx:annotation-driven/>
+	<tx:annotation-driven />
+	
+	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**" />
+	
+	<mvc:resources location="/WEB-INF/pages/" mapping="/pages/**" />
+	
+	<bean name="RestController" class="com.eric.controllers.RestController" />
 
 	<bean name="businessDelegate" class="com.eric.implement.BusinessDelegateImpl">
 		<property name="dataService" ref="dataService"></property>

@@ -14,7 +14,7 @@ public class DAOImpl implements DAO{
 	private SessionFactory sessionFactory;
 	private Session session;
 	
-	public void setSf(SessionFactory sessionFactory) {
+	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 		session = getSession();
 	}
