@@ -5,13 +5,13 @@ import org.springframework.stereotype.Controller;
 import com.eric.data.BusinessDelegate;
 
 @Controller
-public class RestController {
+public class BaseController {
+
 	
 	/**
-	 * Set up Business Delegate 
-	 * Create Setters and Getters
+	 * Setup Business Delegate for use
+	 * Create Getters and Setters
 	 */
-	
 	private BusinessDelegate businessDelegate;
 	
 	public void setBusinessDelegate(BusinessDelegate businessDelegate){

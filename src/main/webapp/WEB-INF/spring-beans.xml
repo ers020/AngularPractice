@@ -15,7 +15,13 @@
 	
 	<mvc:resources location="/WEB-INF/pages/" mapping="/pages/**" />
 	
-	<bean name="RestController" class="com.eric.controllers.RestController" />
+	<bean name="restController" class="com.eric.controllers.RestController">
+		<property name="businessDelegate" ref="businessDelegate"></property>
+	</bean>
+	
+	<bean name="baseController" class="com.eric.controllers.BaseController">
+		<property name="businessDelegate" ref="businessDelegate"></property>
+	</bean>
 
 	<bean name="businessDelegate" class="com.eric.implement.BusinessDelegateImpl">
 		<property name="dataService" ref="dataService"></property>
