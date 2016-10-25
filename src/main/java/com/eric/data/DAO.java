@@ -8,4 +8,8 @@ public interface DAO{
 
 	List<Category> requestCategories();
 
+	Category requestCategoryById(int categoryId);
+
+	void saveObject(Object object);
+
 }

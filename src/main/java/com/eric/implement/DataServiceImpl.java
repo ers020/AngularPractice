@@ -15,7 +15,6 @@ public class DataServiceImpl implements DataService{
 	 *  Attributes && Accessors
 	 */
 	
-	@SuppressWarnings("unused")
 	private DAO dao;
 	
 	public void setDao(DAO dao) {
@@ -26,6 +25,18 @@ public class DataServiceImpl implements DataService{
 	public List<Category> requestCategories() {
 		List<Category> category = dao.requestCategories();
 		return category;
+	}
+
+	@Override
+	public Category requestCategoryById(int categoryId) {
+		Category category = dao.requestCategoryById(categoryId);
+		return category;
+	}
+
+	@Override
+	public void saveObject(Object object) {
+		dao.saveObject(object);
+		
 	}
 	
 }

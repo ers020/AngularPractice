@@ -47,7 +47,7 @@ public class BaseController {
 		if(session == null){
 			session = req.getSession();
 		}
-		session.setAttribute("categoryList", category);
+		session.setAttribute("categories", category);
 		
 		return "input";
 	}

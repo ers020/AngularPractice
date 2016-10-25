@@ -15,7 +15,6 @@ public class BusinessDelegateImpl implements BusinessDelegate{
 	 *  Attributes && Accessors
 	 */
 	
-	@SuppressWarnings("unused")
 	private DataService dataService;
 	
 	public void setDataService(DataService dataService) {
@@ -26,6 +25,18 @@ public class BusinessDelegateImpl implements BusinessDelegate{
 	public List<Category> requestCategories() {
 		List<Category> category = dataService.requestCategories();
 		return category;
+	}
+
+	@Override
+	public Category requestCategoryById(int categoryId) {
+		Category category = dataService.requestCategoryById(categoryId);
+		return category;
+	}
+
+	@Override
+	public void saveObject(Object object) {
+		dataService.saveObject(object);
+		
 	}
 
 	
