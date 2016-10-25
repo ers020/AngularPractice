@@ -29,7 +29,11 @@ public class BusinessDelegateImpl implements BusinessDelegate{
 
 	@Override
 	public Category requestCategoryById(int categoryId) {
+		System.err.println("Business Delegate Implementation reached.");
+		System.err.println("Category Id = " + categoryId);
 		Category category = dataService.requestCategoryById(categoryId);
+		System.err.println("Made it back to Business Delegate Impementation.");
+		System.err.println("Category = " +category.getCategory());
 		return category;
 	}
 

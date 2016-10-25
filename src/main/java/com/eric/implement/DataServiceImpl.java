@@ -29,7 +29,11 @@ public class DataServiceImpl implements DataService{
 
 	@Override
 	public Category requestCategoryById(int categoryId) {
+		System.err.println("Data Service Implementation reached.");
+		System.err.println("Category ID = " + categoryId);
 		Category category = dao.requestCategoryById(categoryId);
+		System.err.println("Returned to Data Service Implementation.");
+		System.err.println("Category = " + category.getCategory());
 		return category;
 	}
 
