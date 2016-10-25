@@ -11,9 +11,9 @@
 
 	<tx:annotation-driven />
 	
-	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**" />
+	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"/>
 	
-	<mvc:resources location="/WEB-INF/pages/" mapping="/pages/**" />
+	<mvc:resources mapping="/pages/**" location="/WEB-INF/pages/" />
 	
 	<bean name="restController" class="com.eric.controllers.RestController">
 		<property name="businessDelegate" ref="businessDelegate"></property>

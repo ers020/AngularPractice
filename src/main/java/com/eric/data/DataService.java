@@ -8,4 +8,8 @@ public interface DataService {
 
 	List<Category> requestCategories();
 
+	Category requestCategoryById(int categoryId);
+
+	void saveObject(Object object);
+
 }
