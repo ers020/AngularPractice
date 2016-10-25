@@ -1,6 +1,5 @@
 package com.eric.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,12 +42,12 @@ public class BaseController {
 	
 	@RequestMapping(value="/input", method=RequestMethod.GET)
 	public String inputPage(HttpServletRequest req, HttpServletResponse resp){
-		List<Category> category = new ArrayList<Category>();
+		List<Category> category = businessDelegate.requestCategories();
 		HttpSession session = req.getSession(false);
 		if(session == null){
 			session = req.getSession();
 		}
-		session.setAttribute("category", category);
+		session.setAttribute("categoryList", category);
 		
 		return "input";
 	}
