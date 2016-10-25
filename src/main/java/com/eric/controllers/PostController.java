@@ -32,17 +32,23 @@ public class PostController {
 	 * Mappings
 	 */
 	
-	@RequestMapping(value="/createItem.do", method=RequestMethod.POST)
+	@RequestMapping(value="createItem.do", method=RequestMethod.POST)
 	public ModelAndView createItem(HttpServletRequest req, HttpServletRequest resp){
 		ModelAndView model = new ModelAndView("input");
-		//get Category Object
-		Category category = businessDelegate.requestCategoryById(Integer.parseInt(req.getParameter("category")));
-		//creat Stock/Item Object
-		Stock stock = new Stock(req.getParameter("name"), 
-				req.getParameter("description"), 
-				Double.parseDouble(req.getParameter("price")), 
-				category);
-		businessDelegate.saveObject(stock);
+		int categoryNumber = 0;
+		categoryNumber = Integer.parseInt(req.getParameter("categoryChoice"));
+		System.err.println("Category Number = " + categoryNumber);
+		if(categoryNumber > 0){
+			//get Category Object
+			//stalls here, even though it is NOT null!
+			Category category = businessDelegate.requestCategoryById(categoryNumber);
+			//creat Stock/Item Object
+			Stock stock = new Stock(req.getParameter("name"), 
+					req.getParameter("description"), 
+					Double.parseDouble(req.getParameter("price")), 
+					category);
+			businessDelegate.saveObject(stock);
+		}
 		
 		return model;
 	}

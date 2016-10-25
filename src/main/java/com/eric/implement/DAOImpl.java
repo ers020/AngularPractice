@@ -4,11 +4,15 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.eric.beans.Category;
 import com.eric.data.DAO;
 
+@Repository
+@Transactional
 public class DAOImpl implements DAO{
 
 	/*
@@ -20,6 +24,11 @@ public class DAOImpl implements DAO{
 	
 	public DAOImpl(){
 		super();
+	}
+	
+	public DAOImpl(SessionFactory factory) throws InterruptedException {
+		this();
+		setSessionFactory(factory);
 	}
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -41,8 +50,8 @@ public class DAOImpl implements DAO{
 		return session;
 	}
 
+	
 	@SuppressWarnings("unchecked")
-	@Transactional
 	public List<Category> requestCategories() {
 		Session ses = sessionFactory.getCurrentSession();
 		setSession(ses);
@@ -50,15 +59,17 @@ public class DAOImpl implements DAO{
 		return category;
 	}
 
-	@Transactional
 	public Category requestCategoryById(int categoryId) {
+		System.err.println("Reached DAO Implementation.");
+		System.err.println("Category Id = " + categoryId);
 		Session ses = sessionFactory.getCurrentSession();
 		setSession(ses);
-		Category category = session.load(Category.class, categoryId);
+		Category category = session.get(Category.class, categoryId);
+		System.err.println("Hit Database!");
+		System.err.println("Category = " +category.getCategory());
 		return category;
 	}
 
-	@Transactional
 	public void saveObject(Object object) {
 		Session ses = sessionFactory.getCurrentSession();
 		setSession(ses);

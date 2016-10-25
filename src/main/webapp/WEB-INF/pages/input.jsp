@@ -46,7 +46,7 @@
 						Category:&nbsp;&nbsp;&nbsp;
 					</td>
 					<td>
-						<select class="form-control" name="category">
+						<select class="form-control" name="categoryChoice">
 							<option value="NONE">---Select an Option--</option>
 							<c:forEach var="category" items="${categories}" >
 								<option value="${category.id}">
