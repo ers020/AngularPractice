@@ -36,8 +36,7 @@ public class RestController {
 	@RequestMapping(value="/stock", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Stock> getStock(HttpServletRequest req, HttpServletResponse resp){
-		List<Stock> stock = businessDelegate.requestStock();
-		return stock;
+		return businessDelegate.requestStock();
 	}
 	
 	
