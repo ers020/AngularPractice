@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.eric.beans.Category;
+import com.eric.beans.Stock;
 import com.eric.data.BusinessDelegate;
 import com.eric.data.DataService;
 
@@ -21,27 +22,33 @@ public class BusinessDelegateImpl implements BusinessDelegate{
 		this.dataService = dataService;
 	}
 
-	@Override
+	/*
+	 * Methods
+	 * 
+	 */
+	
 	public List<Category> requestCategories() {
-		List<Category> category = dataService.requestCategories();
-		return category;
+		return dataService.requestCategories();
+	}
+	
+	public List<Stock> requestStock() {
+		return dataService.requestStock();
 	}
 
-	@Override
+	
 	public Category requestCategoryById(int categoryId) {
-		System.err.println("Business Delegate Implementation reached.");
-		System.err.println("Category Id = " + categoryId);
-		Category category = dataService.requestCategoryById(categoryId);
-		System.err.println("Made it back to Business Delegate Impementation.");
-		System.err.println("Category = " +category.getCategory());
-		return category;
+		return dataService.requestCategoryById(categoryId);
+
 	}
 
-	@Override
+	
 	public void saveObject(Object object) {
 		dataService.saveObject(object);
 		
 	}
+
+	
+
 
 	
 }
