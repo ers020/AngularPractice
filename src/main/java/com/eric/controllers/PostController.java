@@ -3,6 +3,8 @@ package com.eric.controllers;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,13 +22,23 @@ public class PostController {
 	 */
 	private BusinessDelegate businessDelegate;
 	
+	public BusinessDelegate getBusinessDelegate() {
+		return businessDelegate;
+	}
+	
 	public void setBusinessDelegate(BusinessDelegate businessDelegate){
 		this.businessDelegate = businessDelegate;
 	}
 	
-	public BusinessDelegate getBusinessDelegate(){
-		return businessDelegate;
-	}
+	/**
+	 * Test to see if DAO can do the call
+	 */
+
+	/**
+	 * Constants
+	 */
+	
+	private static final String INPUT = "redirect:/input";
 	
 	/**
 	 * Mappings
@@ -34,21 +46,15 @@ public class PostController {
 	
 	@RequestMapping(value="createItem.do", method=RequestMethod.POST)
 	public ModelAndView createItem(HttpServletRequest req, HttpServletRequest resp){
-		ModelAndView model = new ModelAndView("input");
-		int categoryNumber = 0;
-		categoryNumber = Integer.parseInt(req.getParameter("categoryChoice"));
-		System.err.println("Category Number = " + categoryNumber);
-		if(categoryNumber > 0){
-			//get Category Object
-			//stalls here, even though it is NOT null!
-			Category category = businessDelegate.requestCategoryById(categoryNumber);
-			//creat Stock/Item Object
-			Stock stock = new Stock(req.getParameter("name"), 
+		ModelAndView model = new ModelAndView();
+		model.setViewName(INPUT);
+		Category category = businessDelegate.requestCategoryById(Integer.parseInt(req.getParameter("categoryChoice")));
+		//create Stock/Item Object
+		Stock stock = new Stock(req.getParameter("name"), 
 					req.getParameter("description"), 
 					Double.parseDouble(req.getParameter("price")), 
 					category);
-			businessDelegate.saveObject(stock);
-		}
+		businessDelegate.saveObject(stock);
 		
 		return model;
 	}

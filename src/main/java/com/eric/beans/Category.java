@@ -22,16 +22,16 @@ public class Category {
 	@Column(name="CATEGORY_ID")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="categoryId")
 	@SequenceGenerator(name="categoryId", sequenceName="CATEGORY_ID_SEQUENCE", initialValue=1, allocationSize=1)
-	private long id;
+	private int id;
 	
 	@Column(name="CATEGORY_CATEGORY")
 	private String category;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -52,7 +52,7 @@ public class Category {
 		this.category = category;
 	}
 
-	public Category(long id, String category) {
+	public Category(int id, String category) {
 		super();
 		this.id = id;
 		this.category = category;
