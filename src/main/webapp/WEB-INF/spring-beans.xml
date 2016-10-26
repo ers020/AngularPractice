@@ -22,6 +22,10 @@
 	<bean name="baseController" class="com.eric.controllers.BaseController">
 		<property name="businessDelegate" ref="businessDelegate"></property>
 	</bean>
+	
+	<bean name="postController" class="com.eric.controllers.PostController">
+		<property name="businessDelegate" ref="businessDelegate"></property>
+	</bean>
 
 	<bean name="businessDelegate" class="com.eric.implement.BusinessDelegateImpl">
 		<property name="dataService" ref="dataService"></property>
