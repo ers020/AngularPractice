@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,14 +30,11 @@ public class RestController {
 		this.businessDelegate = businessDelegate;
 	}
 	
-	public BusinessDelegate getBusinessDelegate(){
-		return businessDelegate;
-	}
-	
 	@RequestMapping(value="/stock", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Stock> getStock(HttpServletRequest req, HttpServletResponse resp){
-		return businessDelegate.requestStock();
+		List<Stock> stock = businessDelegate.requestStock();
+		return stock;
 	}
 	
 	

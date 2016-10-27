@@ -47,11 +47,11 @@
 	</bean>
 	
 	<bean name="transactionManager" 
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="com.eric.beans" />
 		<property name="hibernateProperties">
